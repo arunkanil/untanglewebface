@@ -1,0 +1,211 @@
+/* ========================  Menu Section ======================== */
+.cross {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+}
+.cross:hover {
+  cursor: pointer;
+}
+.cross:before, .cross:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #666;
+}
+.cross:before {
+  transform: rotate(45deg);
+}
+.cross:after {
+  transform: rotate(-45deg);
+}
+
+/* toggle menu */
+#toggle_menu .cross {
+  position: fixed;
+  top: 45px;
+  right: 50px
+}
+
+@media all and (max-device-width: 480px),
+all and (max-device-width: 767px),
+all and (max-width: 480px) {
+  #toggle_menu .cross {
+    top: 5vmin;
+    right: 5vmin
+  }
+}
+
+#toggle_menu .cross {
+  right: -100%;
+  z-index: 5
+}
+
+@media all and (max-device-width: 480px),
+all and (max-device-width: 767px),
+all and (max-width: 480px) {
+  #toggle_menu .cross {
+    right: -100%
+  }
+}
+
+
+#toggle_menu .cross {
+  width: 5vmin;
+  height: 5vmin
+}
+
+/* Menu Starts Here*/
+#menu .menu_entry p,
+#menu .menu_entry .menu_item {
+  font-size: 60px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  color: #666;
+}
+
+#menu {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  margin-left: 100%;
+  background-color: #efefef;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center
+}
+
+#menu .menu_entry {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  min-width: 410px;
+}
+
+#menu .menu_entry span {
+  border-bottom: 1px solid #c4c4c4;
+}
+
+#menu .menu_entry span:last-child {
+  border: none;
+}
+
+#menu .menu_entry .menu_langs {
+  color: black
+}
+
+#menu .menu_entry .menu_item {
+  text-decoration: none;
+  display: inline-block;
+  padding: 30px 5px;
+  position: relative
+}
+
+#menu .menu_entry .menu_item:before,
+#menu .menu_entry .menu_item:after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 2px;
+  background: #db1721;
+  content: '';
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -moz-transition: -moz-transform 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+  -o-transition: -o-transform 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: transform 0.3s cubic-bezier(0.77, 0, 0.175, 1)
+}
+
+#menu .menu_entry .menu_item:before {
+  right: 100%;
+  -moz-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%
+}
+
+#menu .menu_entry .menu_item:after {
+  left: 100%;
+  -moz-transform-origin: 0 50%;
+  -ms-transform-origin: 0 50%;
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%
+}
+
+#menu .menu_entry .menu_item:hover:before,
+#menu .menu_entry .menu_item:hover:after,
+#menu .menu_entry .menu_item.selected:before,
+#menu .menu_entry .menu_item.selected:after {
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1)
+}
+
+#menu .menu_logo {
+  margin: 50px 0
+}
+
+@media all and (max-device-width: 480px),
+all and (max-device-width: 767px),
+all and (max-width: 480px) {
+  #menu .menu_entry .menu_item {
+    font-size: 40px;
+    padding: 20px 5px;
+  }
+
+  #menu .menu_logo {
+    margin: 5vmin 0
+  }
+  #menu .menu_entry {
+    min-width: 280px;
+  }
+}
+
+#menu .menu_logo img {
+  height: 10vh
+}
+
+#menu .menu_socials {
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  margin: 50px 0;
+}
+
+@media all and (max-device-width: 480px),
+all and (max-device-width: 767px),
+all and (max-width: 480px) {
+  #menu .menu_socials {
+    margin: 5vmin 0
+  }
+}
+/* ======================== End Menu Section ======================== */  
