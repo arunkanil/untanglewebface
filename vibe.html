@@ -425,7 +425,8 @@
                     method: 'post',
                     headers:{
                         'Content-Type': 'application/json',
-                        // "Access-Control-Allow-Origin": window.location
+                        'Access-Control-Allow-Origin': window.location,
+                        'mode' : 'no-cors'
                     }
                 }
                 ).then(response => {
