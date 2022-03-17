@@ -420,34 +420,34 @@
                 $('#clickup-tasks').show();
                 $('#clickup-button').hide();
                 console.log(dynamicContent);
-                // var apiUrl = 'https://app.clickup.com/api/v2/oauth/token';
-                // $.ajax({
-                //     url: `${apiUrl}?code=${dynamicContent}&client_id=BF9CRGTBBOG42NDBTO0SD6N7T79VI1R9&client_secret=FIY97MPBA38CUO1RVSETPDFARO75ONB3RUJPPGOB69HZ5P4F915LBYJIQKZZCM89`,
-                //     type: "POST",
-                //     success: function(result) {
-                //         console.log(result);
-                //     },
-                //     error: function(error) {
-                //         console.log(error);
-                //     },
-                // })
-                // fetch(`${apiUrl}?code=${dynamicContent}&client_id=BF9CRGTBBOG42NDBTO0SD6N7T79VI1R9&client_secret=FIY97MPBA38CUO1RVSETPDFARO75ONB3RUJPPGOB69HZ5P4F915LBYJIQKZZCM89`, {
-                //     method: 'OPTIONS'
-                //     // headers:{
-                //     //     'Content-Type': 'application/json',
-                //     //     'Access-Control-Allow-Origin': window.location,
-                //     //     'mode' : 'no-cors'
-                //     // }
-                // }
-                // ).then(response => {
-                //     return response.json();
-                // }).then(data => {
-                //     // Work with JSON data here
-                //     console.log(data);
-                // }).catch(err => {
-                //     // Do something for an error here
-                //     console.log(err);
-                // });
+                var apiUrl = 'https://untanglecorsproxy.herokuapp.com/https://app.clickup.com/api/v2/oauth/token';
+                $.ajax({
+                    url: `${apiUrl}?code=${dynamicContent}&client_id=BF9CRGTBBOG42NDBTO0SD6N7T79VI1R9&client_secret=FIY97MPBA38CUO1RVSETPDFARO75ONB3RUJPPGOB69HZ5P4F915LBYJIQKZZCM89`,
+                    type: "POST",
+                    success: function(result) {
+                        console.log(result);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    },
+                })
+                fetch(`${apiUrl}?code=${dynamicContent}&client_id=BF9CRGTBBOG42NDBTO0SD6N7T79VI1R9&client_secret=FIY97MPBA38CUO1RVSETPDFARO75ONB3RUJPPGOB69HZ5P4F915LBYJIQKZZCM89`, {
+                    method: 'OPTIONS'
+                    // headers:{
+                    //     'Content-Type': 'application/json',
+                    //     'Access-Control-Allow-Origin': window.location,
+                    //     'mode' : 'no-cors'
+                    // }
+                }
+                ).then(response => {
+                    return response.json();
+                }).then(data => {
+                    // Work with JSON data here
+                    console.log(data);
+                }).catch(err => {
+                    // Do something for an error here
+                    console.log(err);
+                });
             }
             // Check if the URL parmeter is empty or not defined, display default content
             else {
