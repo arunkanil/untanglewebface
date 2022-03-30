@@ -52,7 +52,13 @@
     <!-- Modernizr script
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script src="assets/js/modernizr.js"></script>
-
+    <style>
+        .form-select:focus {
+            border-color: #db1721;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgb(219 23 33 / 22%);
+        }
+    </style>
 </head>
 
 <!-- Body Start
@@ -201,6 +207,16 @@
                             Clickup</a>
                     </div>
                     <div class="accordion display-none" style="margin-top: 20px;" id="clickup-tasks">
+
+                        <div style="display: flex;justify-content: center;">
+                            <select class="form-select" style="width: 200pt;" id="user-select"
+                                aria-label="Default select example">
+                                <option selected>Select User</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -421,12 +437,34 @@
                 $('#clickup-button').hide();
                 console.log(dynamicContent);
 
-                var apiUrl = 'https://untanglecorsproxy.herokuapp.com/https://app.clickup.com/api/v2/oauth/token';
+                var CorsapiUrl = 'https://untanglecorsproxy.herokuapp.com/https://app.clickup.com/api/v2/oauth/token';
+                var apiURL = 'https://app.clickup.com/api/';
+                var ele = document.getElementById('user-select');
+
                 if (localStorage.getItem("access_token")) {
                     console.log("token found");
+                    fetch(`${apiURL}v2/team`, {
+                        method: 'GET',
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            // "X-Requested-With": "XMLHttpRequest",
+                            'Authorization': localStorage.getItem("access_token")
+                        }
+                    }
+                    ).then(response => {
+                        return response.json();
+                    }).then(data => {
+                        console.log(data);
+                        for (var i = 0; i < birds.length; i++) {
+                            ele.innerHTML = ele.innerHTML +
+                                '<option value="' + data.teams[0].members[i].user.id + '">' + data.teams[0].members[i].user.username + '</option>';
+                        }
+                    }).catch(err => {
+                        console.log(err);
+                    });
                 }
                 else {
-                    fetch(`${apiUrl}?code=${dynamicContent}&client_id=BF9CRGTBBOG42NDBTO0SD6N7T79VI1R9&client_secret=FIY97MPBA38CUO1RVSETPDFARO75ONB3RUJPPGOB69HZ5P4F915LBYJIQKZZCM89`, {
+                    fetch(`${CorsapiUrl}?code=${dynamicContent}&client_id=BF9CRGTBBOG42NDBTO0SD6N7T79VI1R9&client_secret=FIY97MPBA38CUO1RVSETPDFARO75ONB3RUJPPGOB69HZ5P4F915LBYJIQKZZCM89`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

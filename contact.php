@@ -29,7 +29,7 @@
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-	<link rel="stylesheet" href="assets/css/intlTelInput.css">
+	  <link rel="stylesheet" href="assets/css/intlTelInput.css">
   	<link href="assets/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/menu.css">
