@@ -210,7 +210,7 @@
 
                         <div style="display: flex;justify-content: center;">
                             <select class="form-select" style="width: 200pt;" id="user-select"
-                                aria-label="Default select example" onchange="loadTasks(e)">
+                                aria-label="Default select example" onchange="loadTasks()">
                                 <option selected>Select User</option>
                             </select>
                         </div>
@@ -489,8 +489,8 @@
             }
         });
 
-        function loadTasks(e) {
-            console.log(e);
+        function loadTasks() {
+            console.log(document.getElementById("user-select").value);
         }
     </script>
     <script src="assets/js/full-page-menu.js"></script>
