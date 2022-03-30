@@ -422,23 +422,29 @@
                 console.log(dynamicContent);
 
                 var apiUrl = 'https://untanglecorsproxy.herokuapp.com/https://app.clickup.com/api/v2/oauth/token';
-
-                fetch(`${apiUrl}?code=${dynamicContent}&client_id=BF9CRGTBBOG42NDBTO0SD6N7T79VI1R9&client_secret=FIY97MPBA38CUO1RVSETPDFARO75ONB3RUJPPGOB69HZ5P4F915LBYJIQKZZCM89`, {
-                    method: 'POST',
-                    headers:{
-                        'Content-Type': 'application/json',
-                        "X-Requested-With": "XMLHttpRequest",
-                    }
+                if (localStorage.getItem("access_token")) {
+                    console.log("token found");
                 }
-                ).then(response => {
-                    return response.json();
-                }).then(data => {
-                    // Work with JSON data here
-                    console.log(data);
-                }).catch(err => {
-                    // Do something for an error here
-                    console.log(err);
-                });
+                else {
+                    fetch(`${apiUrl}?code=${dynamicContent}&client_id=BF9CRGTBBOG42NDBTO0SD6N7T79VI1R9&client_secret=FIY97MPBA38CUO1RVSETPDFARO75ONB3RUJPPGOB69HZ5P4F915LBYJIQKZZCM89`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            "X-Requested-With": "XMLHttpRequest",
+                        }
+                    }
+                    ).then(response => {
+                        return response.json();
+                    }).then(data => {
+                        // Work with JSON data here
+                        console.log(data);
+                        localStorage.setItem("access_token", data.access_token);
+                    }).catch(err => {
+                        // Do something for an error here
+                        console.log(err);
+                    });
+                }
+
             }
             // Check if the URL parmeter is empty or not defined, display default content
             else {
