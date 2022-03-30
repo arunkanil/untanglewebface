@@ -210,9 +210,8 @@
 
                         <div style="display: flex;justify-content: center;">
                             <select class="form-select" style="width: 200pt;" id="user-select"
-                                aria-label="Default select example">
+                                aria-label="Default select example" onchange="loadTasks(e)">
                                 <option selected>Select User</option>
-                                
                             </select>
                         </div>
                         <div class="accordion-item">
@@ -489,6 +488,10 @@
                 console.log(dynamicContent);
             }
         });
+
+        function loadTasks(e) {
+            console.log(e);
+        }
     </script>
     <script src="assets/js/full-page-menu.js"></script>
 
