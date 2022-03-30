@@ -453,7 +453,7 @@
                         return response.json();
                     }).then(data => {
                         console.log(data.teams[0].members);
-                        for (var i = 0; i < birds.length; i++) {
+                        for (var i = 0; i < data.teams[0].members.length; i++) {
                             ele.innerHTML = ele.innerHTML +
                                 '<option value="' + data.teams[0].members[i].user.id + '">' + data.teams[0].members[i].user.username + '</option>';
                         }
