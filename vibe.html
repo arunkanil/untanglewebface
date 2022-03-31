@@ -213,7 +213,7 @@
                                 <option selected>Select User</option>
                             </select>
                         </div>
-                        
+
                     </div>
                 </div>
             </section>
@@ -399,6 +399,25 @@
                         // Work with JSON data here
                         console.log(data);
                         localStorage.setItem("access_token", data.access_token);
+                        fetch(`${CorsapiUrl}v2/team`, {
+                            method: 'GET',
+                            headers: {
+                                // 'Content-Type': 'application/json',
+                                // "X-Requested-With": "XMLHttpRequest",
+                                'Authorization': localStorage.getItem("access_token")
+                            }
+                        }
+                        ).then(response => {
+                            return response.json();
+                        }).then(data => {
+                            console.log(data.teams[0].members);
+                            for (var i = 0; i < data.teams[0].members.length; i++) {
+                                ele.innerHTML = ele.innerHTML +
+                                    '<option value="' + data.teams[0].members[i].user.id + '">' + data.teams[0].members[i].user.username + '</option>';
+                            }
+                        }).catch(err => {
+                            console.log(err);
+                        });
                     }).catch(err => {
                         // Do something for an error here
                         console.log(err);
@@ -419,24 +438,24 @@
             var ele = document.getElementById('clickup-tasks');
 
             fetch(`${CorsapiUrl}v2/list/75330697/task?assignees%5B%5D=${document.getElementById("user-select").value}&statuses%5B%5D=priorities`, {
-                        method: 'GET',
-                        headers: {
-                            // 'Content-Type': 'application/json',
-                            // "X-Requested-With": "XMLHttpRequest",
-                            'Authorization': localStorage.getItem("access_token")
-                        }
-                    }
-                    ).then(response => {
-                        return response.json();
-                    }).then(data => {
-                        console.log(data.tasks);
-                        for (var i = 0; i < data.tasks.length; i++) {
-                            ele.innerHTML = ele.innerHTML +
-                                '<div class="accordion-item"><h2 class="accordion-header" id="headingOne"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'+ data.tasks[i].name +'</button></h2><div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body">'+ data.tasks[i].description +'</div></div></div>';
-                        }
-                    }).catch(err => {
-                        console.log(err);
-                    });
+                method: 'GET',
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    // "X-Requested-With": "XMLHttpRequest",
+                    'Authorization': localStorage.getItem("access_token")
+                }
+            }
+            ).then(response => {
+                return response.json();
+            }).then(data => {
+                console.log(data.tasks);
+                for (var i = 0; i < data.tasks.length; i++) {
+                    ele.innerHTML = ele.innerHTML +
+                        '<div class="accordion-item"><h2 class="accordion-header" id="headingOne"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">' + data.tasks[i].name + '</button></h2><div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body">' + data.tasks[i].description + '</div></div></div>';
+                }
+            }).catch(err => {
+                console.log(err);
+            });
         }
     </script>
     <script src="assets/js/full-page-menu.js"></script>
