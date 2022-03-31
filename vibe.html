@@ -352,6 +352,8 @@
     </script>
     <script type="text/javascript">
         // Parse the URL parameter
+        var CorsapiUrl = 'https://untanglecorsproxy.herokuapp.com/https://app.clickup.com/api/';
+
         function getParameterByName(name, url) {
             if (!url) url = window.location.href;
             name = name.replace(/[\[\]]/g, "\\$&");
@@ -372,7 +374,6 @@
                 $('#clickup-button').hide();
                 console.log(dynamicContent);
 
-                var CorsapiUrl = 'https://untanglecorsproxy.herokuapp.com/https://app.clickup.com/api/';
                 var apiURL = 'https://app.clickup.com/api/';
                 var ele = document.getElementById('user-select');
 
