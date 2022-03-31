@@ -207,27 +207,13 @@
                             Clickup</a>
                     </div>
                     <div class="accordion display-none" style="margin-top: 20px;" id="clickup-tasks">
-
                         <div style="display: flex;justify-content: center;">
                             <select class="form-select" style="width: 200pt;" id="user-select"
                                 aria-label="Default select example" onchange="loadTasks()">
                                 <option selected>Select User</option>
                             </select>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    HomeSafe working build
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </section>
@@ -430,6 +416,8 @@
 
         function loadTasks() {
             console.log(document.getElementById("user-select").value);
+            var ele = document.getElementById('clickup-tasks');
+
             fetch(`${CorsapiUrl}v2/list/75330697/task?assignees%5B%5D=${document.getElementById("user-select").value}&statuses%5B%5D=priorities`, {
                         method: 'GET',
                         headers: {
@@ -442,10 +430,10 @@
                         return response.json();
                     }).then(data => {
                         console.log(data.tasks);
-                        // for (var i = 0; i < data.teams[0].members.length; i++) {
-                        //     ele.innerHTML = ele.innerHTML +
-                        //         '<option value="' + data.teams[0].members[i].user.id + '">' + data.teams[0].members[i].user.username + '</option>';
-                        // }
+                        for (var i = 0; i < data.tasks.length; i++) {
+                            ele.innerHTML = ele.innerHTML +
+                                '<div class="accordion-item"><h2 class="accordion-header" id="headingOne"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'+ data.tasks[i].name +'</button></h2><div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body">'+ data.tasks[i].description +'</div></div></div>';
+                        }
                     }).catch(err => {
                         console.log(err);
                     });
