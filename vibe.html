@@ -206,15 +206,15 @@
                             href="https://app.clickup.com/api?client_id=BF9CRGTBBOG42NDBTO0SD6N7T79VI1R9&redirect_uri=arunkanil.github.io/untanglewebface/vibe.html">Connect
                             Clickup</a>
                     </div>
-                    <div class="accordion display-none" style="margin-top: 20px;">
+                    <div class="accordion display-none" style="margin-top: 20px;" id="clickup-tasks">
                         <div style="display: flex;justify-content: center;">
                             <select class="form-select" style="width: 200pt;" id="user-select"
                                 aria-label="Default select example" onchange="loadTasks()">
                                 <option selected>Select User</option>
                             </select>
                         </div>
-                        <div id="clickup-tasks">
-
+                        <div id="clickup-accordions">
+                            
                         </div>
                     </div>
                 </div>
@@ -437,7 +437,7 @@
 
         function loadTasks() {
             console.log(document.getElementById("user-select").value);
-            var ele = document.getElementById('clickup-tasks');
+            var ele = document.getElementById('clickup-accordions');
             ele.innerHTML ="";
             fetch(`${CorsapiUrl}v2/list/75330697/task?assignees%5B%5D=${document.getElementById("user-select").value}&statuses%5B%5D=priorities`, {
                 method: 'GET',
