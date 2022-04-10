@@ -451,7 +451,7 @@
                 console.log(data.tasks);
                 for (var i = 0; i < data.tasks.length; i++) {
                     ele.innerHTML = ele.innerHTML +
-                        '<div class="accordion-item"><h2 class="accordion-header" id="headingOne"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'+i+'" aria-expanded="true" aria-controls="collapseOne"'+i+'>' + data.tasks[i].name + '</button></h2><div id="collapseOne"'+i+' class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body">' + data.tasks[i].description + '</div></div></div>';
+                        '<div class="accordion-item"><h2 class="accordion-header" id="headingOne"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'+i+'" aria-expanded="true" aria-controls="collapseOne'+i+'">' + data.tasks[i].name + '</button></h2><div id="collapseOne'+i+'" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body">' + data.tasks[i].description + '</div></div></div>';
                 }
             }).catch(err => {
                 console.log(err);
