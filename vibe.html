@@ -436,7 +436,7 @@
         function loadTasks() {
             console.log(document.getElementById("user-select").value);
             var ele = document.getElementById('clickup-tasks');
-
+            ele.innerHTML ="";
             fetch(`${CorsapiUrl}v2/list/75330697/task?assignees%5B%5D=${document.getElementById("user-select").value}&statuses%5B%5D=priorities`, {
                 method: 'GET',
                 headers: {
